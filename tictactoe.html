@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Крестики-нолики</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/games.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="miner.html">Сапёр</a>
+      <a href="tictactoe.html">Крестики-нолики</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>Крестики-нолики</h1>
+    <div class="game-container">
+      <div id="board"></div>
+      <div class="controls">
+        <p id="status">Ходит X</p>
+        <button onclick="ttt.reset()">Новая игра</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+  </footer>
+
+  <script src="js/tictactoe.js"></script>
+</body>
+</html>

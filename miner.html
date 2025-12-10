@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сапёр</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/games.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="miner.html">Сапёр</a>
+      <a href="tictactoe.html">Крестики-нолики</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>Сапёр</h1>
+
+    <div class="controls">
+      <label>Размер поля:</label>
+      <select id="board-size" onchange="miner.changeSize(this.value)">
+        <option value="5">5×5</option>
+        <option value="10">10×10</option>
+        <option value="15">15×15</option>
+      </select>
+      <button onclick="miner.reset()">Новая игра</button>
+      <button id="pause-btn" onclick="miner.togglePause()">Пауза</button>
+      <p id="miner-status">Выберите размер и начните игру</p>
+    </div>
+
+    <div class="game-container">
+      <div id="miner-board"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+  </footer>
+
+  <script src="js/miner.js"></script>
+</body>
+</html>

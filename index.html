@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Главная — API данные</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="uiObject/slider/slider.css" />
+  <link rel="stylesheet" href="uiObject/btnanimation/btnanim.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="miner.html">Сапёр</a>
+      <a href="tictactoe.html">Крестики-нолики</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>API данные</h1>
+
+    <div class="api-sections">
+      <div class="section">
+        <h2>Курс доллара (USD/RUB)</h2>
+        <p id="usd-rate">Загрузка...</p>
+      </div>
+
+      <div class="section">
+        <h2>Цена биткойна (BTC/USD)</h2>
+        <p id="btc-price">Загрузка...</p>
+      </div>
+
+      <div class="section">
+        <h2>Погода в Костроме</h2>
+        <p id="weather">Загрузка...</p>
+      </div>
+    </div>
+
+    <!-- Новый контент -->
+    <div class="slider-section">
+      <h2>Фотогалерея</h2>
+      <div class="main-container">
+        <div class="main-content">
+          <div class="slider">
+            <img id="slide" src="uiObject/slider/img/1.jpg" width="600" alt="Слайд" class="slide-img">
+            <button id="prev" class="nav-btn prev">❮</button>
+            <button id="next" class="nav-btn next">❯</button>
+          </div>
+        </div>
+        <div class="side-bar">
+          <button id="btn2" class="special-btn">Нажми меня</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="uiObject/button/clickBtn.js" defer></script>
+  <script src="uiObject/slider/slider.js"></script>
+  <script src="uiObject/btnanimation/btnanim.js"></script>
+</body>
+</html>
