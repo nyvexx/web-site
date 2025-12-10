@@ -27,6 +27,7 @@ const ttt = {
     this.board[i][j] = this.currentPlayer;
     const cell = document.querySelector(`.cell[data-row="${i}"][data-col="${j}"]`);
     cell.textContent = this.currentPlayer;
+    cell.classList.add(this.currentPlayer.toLowerCase()); // Добавляем класс x/o для цвета
 
     if (this.checkWin()) {
       document.getElementById('status').textContent = `Победил ${this.currentPlayer}!`;
