@@ -1,6 +1,6 @@
 const ttt = {
   board: Array(3).fill().map(() => Array(3).fill('')),
-  currentPlayer: 'X',
+  currentPlayer: 'X', // Игрок — X, компьютер — O
   gameOver: false,
 
   init() {
@@ -23,26 +23,48 @@ const ttt = {
   },
 
   makeMove(i, j) {
-    if (this.board[i][j] || this.gameOver) return;
-    this.board[i][j] = this.currentPlayer;
+    if (this.board[i][j] || this.gameOver || this.currentPlayer !== 'X') return;
+    this.makeMoveAt(i, j, 'X');
+
+    if (this.checkWin() || this.checkDraw()) return;
+
+    // Компьютер делает ход
+    this.currentPlayer = 'O';
+    setTimeout(() => {
+      this.makeComputerMove();
+    }, 300); // Небольшая задержка для "реалистичности"
+  },
+
+  makeMoveAt(i, j, player) {
+    this.board[i][j] = player;
     const cell = document.querySelector(`.cell[data-row="${i}"][data-col="${j}"]`);
-    cell.textContent = this.currentPlayer;
-    cell.classList.add(this.currentPlayer.toLowerCase()); // Добавляем класс x/o для цвета
+    cell.textContent = player;
+    cell.classList.add(player.toLowerCase());
+  },
 
-    if (this.checkWin()) {
-      document.getElementById('status').textContent = `Победил ${this.currentPlayer}!`;
-      this.gameOver = true;
-      return;
+  makeComputerMove() {
+    if (this.gameOver) return;
+
+    // Простой AI: ищем пустую клетку
+    const emptyCells = [];
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (!this.board[i][j]) {
+          emptyCells.push([i, j]);
+        }
+      }
     }
 
-    if (this.checkDraw()) {
-      document.getElementById('status').textContent = 'Ничья!';
-      this.gameOver = true;
-      return;
-    }
+    if (emptyCells.length === 0) return;
 
-    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-    document.getElementById('status').textContent = `Ходит ${this.currentPlayer}`;
+    // Выбираем случайную пустую клетку
+    const [i, j] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    this.makeMoveAt(i, j, 'O');
+
+    if (this.checkWin() || this.checkDraw()) return;
+
+    this.currentPlayer = 'X';
+    document.getElementById('status').textContent = 'Ходит X';
   },
 
   checkWin() {
@@ -63,6 +85,9 @@ const ttt = {
         this.board[r1][c1] === this.board[r2][c2] &&
         this.board[r1][c1] === this.board[r3][c3]
       ) {
+        // Победитель
+        document.getElementById('status').textContent = `Победил ${this.board[r1][c1]}!`;
+        this.gameOver = true;
         return true;
       }
     }
@@ -75,6 +100,8 @@ const ttt = {
         if (!this.board[i][j]) return false;
       }
     }
+    document.getElementById('status').textContent = 'Ничья!';
+    this.gameOver = true;
     return true;
   },
 
