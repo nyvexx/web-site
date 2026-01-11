@@ -112,7 +112,7 @@ const miner = {
       document.getElementById('pause-btn').textContent = 'Продолжить';
     } else {
       document.getElementById('pause-btn').textContent = 'Пауза';
-      this.updateStatus(); // Восстанавливаем статус
+      this.updateStatus();
     }
   },
 
@@ -120,6 +120,7 @@ const miner = {
     if (this.size === 5) return 50;
     if (this.size === 10) return 35;
     if (this.size === 15) return 25;
+    if (this.size === 50) return 10; // Маленькие ячейки для 50x50
     return 30;
   },
 
